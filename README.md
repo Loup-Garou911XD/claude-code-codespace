@@ -51,26 +51,18 @@ Expected output:
 - Claude: 1.0.56+ (Claude Code)
 - Docker: 28.3.2+
 
-## Authentication Workflow
-
-### Critical Authentication Steps
-
-**⚠️ Important**: You MUST authenticate Claude first before using `claude` cmd. This is confirmed by community testing.
-
-#### Step 1: Authenticate Claude
+## Authenticate Claude
 ```bash
 # Start Claude and authenticate
-claude --dangerously-skip-permissions
+claude
 ```
 - Complete the login process with your Anthropic account
 - Choose subscription (default) or API key option
-- **Exit Claude after authentication completes**
-
-#### Step 2: Why Exit Claude?
-Authentication persists in secure storage (keychain/auth files) after exit:
-- **`~/.claude/`** - Session data and configurations
-- **macOS Keychain** or **`~/.config/claude-code/auth.json`** - Secure tokens
-
+- After approval, you will land at http://localhost:42941/callback?code=...&state=...
+- In local terminal, run `gh codespace ports forward 42941:42941 -c <codespace name>`
+- Refresh the page and you will see confirmation for sign in
+> [!NOTE]
+> Change the port in gh cmd if its different for you in the localhost url
 
 # Special thanks
 This repo was created with the help of https://gist.github.com/raoulbia-ai/ec00967e8d9da4cfec22371655972acf 
